@@ -15,12 +15,12 @@ const MAIL = process.env.EMAIL;
 const mailgun = require("mailgun-js")({ apiKey: api_key, domain: domain });
 
 app.post("/contact-form", (req, res) => {
-  const { name, email, message } = req.fields;
+  const { name, email, phone, message } = req.fields;
 
   const data = {
     from: `${name} ${email}`,
     to: MAIL,
-    subject: `Contact form from ${name}`,
+    subject: `Contact form from ${name} ${phone}`,
     text: message,
   };
 
